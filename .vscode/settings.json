@@ -1,0 +1,9 @@
+{
+  "flow.useNPMPackagedFlow": true,
+  "javascript.validate.enable": false,
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2
+  }
+}

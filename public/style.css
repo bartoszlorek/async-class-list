@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+}
+
+.box {
+  position: absolute;
+  background: #82cbd8;
+  width: 100px;
+  height: 100px;
+  margin: -50px 0 0 -50px;
+  top: 50%;
+  left: 50%;
+}
+
+.box--animating {
+  transition: all 1000ms;
+}
+
+.box--top {
+  transform: translate(0, -100%);
+  opacity: 0;
+}
+
+.box--center {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.box--bottom {
+  transform: translate(0, 100%);
+  opacity: 0;
+}
+
+.box--left {
+  transform: translate(-100%, 0);
+  opacity: 0;
+}
+
+.box--right {
+  transform: translate(100%, 0);
+  opacity: 0;
+}
