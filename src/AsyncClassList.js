@@ -22,7 +22,6 @@ class AsyncClassList {
   add(...classNames: Array<string>): AsyncClassList {
     this.stack.push({ addNames: classNames, removeNames: [] });
     this.resolve();
-    console.log(this.stack);
     return this;
   }
 
