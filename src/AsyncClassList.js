@@ -37,21 +37,21 @@ class AsyncClassList {
     return this;
   }
 
-  setState({ addNames, removeNames }: ClassState): AsyncClassList {
-    if (this.element) {
-      if (addNames && addNames.length) {
-        this.element.classList.add(...addNames);
-      }
-      if (removeNames && removeNames.length) {
-        this.element.classList.remove(...removeNames);
-      }
+  setState({ addNames, removeNames }: ClassState): void {
+    if (!this.element) {
+      return
     }
-    return this;
+    if (addNames && addNames.length) {
+      this.element.classList.add(...addNames);
+    }
+    if (removeNames && removeNames.length) {
+      this.element.classList.remove(...removeNames);
+    }
   }
 
-  resolve(): AsyncClassList {
-    if (this.stack.length > 1) {
-      return this;
+  resolve(): void {
+    if (this.stack.length !== 1) {
+      return
     }
     this.setState(this.stack[0]);
     requestFrame(() => {
@@ -65,8 +65,6 @@ class AsyncClassList {
       }, identity)();
       this.stack = [];
     });
-
-    return this;
   }
 }
 
