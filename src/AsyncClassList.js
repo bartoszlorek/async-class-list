@@ -55,7 +55,6 @@ class AsyncClassList {
       return this;
     }
     this.setState(this.stack[0]);
-
     requestFrame(() => {
       this.stack.shift();
       this.stack.reverse();
