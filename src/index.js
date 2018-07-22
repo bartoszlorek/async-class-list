@@ -8,17 +8,24 @@ const center = 'box--center';
 const top = 'box--top';
 
 const box = document.querySelector('.js-box');
-const boxClass = new AsyncClassList(box);
 
-boxClass
-  .add(bottom)
-  .add(animating, center)
-  .remove(bottom);
+if (box) {
+  const boxClass = new AsyncClassList(box);
 
-setTimeout(() => {
   boxClass
-    .remove(animating, center)
-    .add(top)
+    .add(bottom)
     .add(animating, center)
-    .remove(top);
-}, 2000);
+    .remove(bottom);
+
+  setTimeout(() => {
+    boxClass
+      .remove(animating, center)
+      .add(top);
+
+    setTimeout(() => {
+      boxClass
+        .add(animating, center)
+        .remove(top);
+    }, 200);
+  }, 2000);
+}

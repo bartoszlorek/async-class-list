@@ -76,4 +76,30 @@ describe('AsyncClassList()', () => {
     expect($element.classList.contains('first')).toBe(false);
     expect($element.classList.contains('second')).toBe(false);
   });
+
+  it('adds and removes classes in one query', () => {
+    const $element = global.document.querySelector('.js-element');
+    const elemClass = new AsyncClassList($element);
+
+    $element.classList.add('first');
+    expect($element.classList.contains('first')).toBe(true);
+    expect($element.classList.contains('second')).toBe(false);
+
+    elemClass.set(['second'], ['first']);
+    expect($element.classList.contains('first')).toBe(false);
+    expect($element.classList.contains('second')).toBe(true);
+  });
+
+  it('toggles multiple classes of given element', () => {
+    const $element = global.document.querySelector('.js-element');
+    const elemClass = new AsyncClassList($element);
+
+    $element.classList.add('first');
+    expect($element.classList.contains('first')).toBe(true);
+    expect($element.classList.contains('second')).toBe(false);
+
+    elemClass.toggle('first', 'second');
+    expect($element.classList.contains('first')).toBe(false);
+    expect($element.classList.contains('second')).toBe(true);
+  });
 });
